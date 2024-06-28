@@ -1,0 +1,64 @@
+.border-draw {
+    position: relative;
+    overflow: hidden;
+}
+
+.border-draw:before,
+.border-draw:after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    border: 2px solid #FF0000;
+    animation: draw 1.5s linear forwards;
+}
+
+.border-draw:before {
+    animation-delay: 0s;
+}
+
+.border-draw:after {
+    animation-delay: 1.5s;
+}
+
+@keyframes draw {
+    0% {
+        stroke-dasharray: 0, 100;
+    }
+    100% {
+        stroke-dasharray: 100, 0;
+    }
+}
+
+.image-reveal-img {
+    mask-image: repeating-linear-gradient(
+        -45deg,
+        #000 0,
+        #000 1em,
+        transparent 1em,
+        transparent 2em
+    );
+    -webkit-mask-image: repeating-linear-gradient(
+        -45deg,
+        #000 0,
+        #000 1em,
+        transparent 1em,
+        transparent 2em
+    );
+    mask-size: 200% 200%;
+    -webkit-mask-size: 200% 200%;
+    animation: reveal 3s linear forwards;
+}
+
+@keyframes reveal {
+    0% {
+        mask-position: 200% 0;
+        -webkit-mask-position: 200% 0;
+    }
+    100% {
+        mask-position: 0 0;
+        -webkit-mask-position: 0 0;
+    }
+}
